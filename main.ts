@@ -1,3 +1,10 @@
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    controller.player1.moveSprite(mySprite, 100, 100)
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    controller.player1.moveSprite(mySprite, 50, 50)
+})
+let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -120,23 +127,20 @@ scene.setBackgroundImage(img`
     ddddddd55555555555555555555ddddd55555555555555555555555555555555555555ddddddddddddddddddddddddddddde3355dddddddddddddd5d55b3bdddd444bbdddb4ddd4dd3ee3ddddddddddd
     ddddddddd55555555555555555555ddddddddddddddddddddd555555ddddddddddddddddddddddddddddddddddddddddddde33d55d5555dd555d555333b3bddddddd4e33dbbdd4444eeddddddddddddd
     `)
-let mySprite = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . f f f f f f f f f . . . . 
-    . . f e e d d d d d d d f . . . 
-    . . f e 4 e 1 1 1 d d 4 f . . . 
-    . . f 4 4 4 e 1 1 e 4 4 f . . . 
-    . . f d d 4 e 1 e e d d f . . . 
-    . . f 1 a e e e 4 e a 1 f . . . 
-    . . f e e 1 1 1 1 1 e e f . . . 
-    . . f e 1 f d d d f 1 4 f . . . 
-    . . f e 1 d 2 2 2 d 1 e f . . . 
-    . . . f f f f f f f f f . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
+mySprite = sprites.create(img`
+    . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . 
+    . . . f f f f f f f f f . 
+    . . f e e d d d d d d d f 
+    . . f e 4 e 1 1 1 d d 4 f 
+    . . f 4 4 4 e 1 1 e 4 4 f 
+    . . f d d 4 e 1 e e d d f 
+    . . f 1 a e e e 4 e a 1 f 
+    . . f e e 1 1 1 1 1 e e f 
+    . . f e 1 f d d d f 1 4 f 
+    . . f e 1 d 2 2 2 d 1 e f 
+    . . . f f f f f f f f f . 
     `, SpriteKind.Player)
 mySprite.setVelocity(50, 50)
 controller.moveSprite(mySprite)
