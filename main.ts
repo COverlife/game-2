@@ -1,6 +1,9 @@
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setPosition(randint(-10, 100), randint(-10, 100))
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles0, function (sprite, location) {
+    game.over(false)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.player1.moveSprite(mySprite, 100, 100)
 })
@@ -253,7 +256,9 @@ let Otommmateee = sprites.create(img`
     `, SpriteKind.Enemy)
 Otommmateee.follow(mySprite, 25)
 Otommmateee.setPosition(128, 28)
+tiles.setTilemap(tilemap`level1`)
+scene.cameraFollowSprite(mySprite)
 forever(function () {
-    mySprite3.setPosition(randint(0, 100), randint(0, 100))
-    pause(1000)
+    mySprite3.setPosition(randint(0, 310), randint(0, 240))
+    pause(2000)
 })
