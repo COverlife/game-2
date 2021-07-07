@@ -1,9 +1,24 @@
-controller.right.onEvent(ControllerButtonEvent.Released, function () {
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite2.setPosition(randint(-10, 100), randint(-10, 100))
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.player1.moveSprite(mySprite, 100, 100)
 })
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    controller.player1.moveSprite(mySprite, 50, 50)
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    controller.player1.moveSprite(mySprite, 75, 75)
 })
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    controller.player1.moveSprite(mySprite, 25, 25)
+})
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    controller.player1.moveSprite(mySprite, 75, 75)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprite.destroy(effects.bubbles, 2000)
+    pause(1900)
+    game.over(false, effects.slash)
+})
+let mySprite2: Sprite = null
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -142,9 +157,9 @@ mySprite = sprites.create(img`
     . . f e 1 d 2 2 2 d 1 e f 
     . . . f f f f f f f f f . 
     `, SpriteKind.Player)
-mySprite.setVelocity(50, 50)
+mySprite.setVelocity(25, 25)
 controller.moveSprite(mySprite)
-let mySprite2 = sprites.create(img`
+mySprite2 = sprites.create(img`
     ..........bbbbbb................
     .......bbb444444bb..............
     .....2244444ddd444b.............
@@ -177,6 +192,6 @@ let mySprite2 = sprites.create(img`
     .........................cb11c..
     ..........................ccc...
     ................................
-    `, SpriteKind.Player)
+    `, SpriteKind.Enemy)
 mySprite2.setPosition(27, 33)
-mySprite2.follow(mySprite, 75)
+mySprite2.follow(mySprite, 25)
